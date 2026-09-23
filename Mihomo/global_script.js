@@ -182,16 +182,9 @@ if (ruleSet === 'all') {
 const rules = [
   'DST-PORT,22,直连', // Git SSH（必须放首位，防止密钥协商失败）
   'DST-PORT,3389,直连', // Windows远程连接
-  'DST-PORT,5938,直连', // TeamViewer（核心端口，含TCP/UDP）
-  'DST-PORT,7070,直连', // AnyDesk（主端口，含TCP/UDP音视频流）
-  'DST-PORT,19966,直连', // 向日葵远程控制
   'DST-PORT,21114-21119,直连', // RustDesk（含WebSocket中继端口）
-  'DST-PORT,4118,直连', // 蒲公英P2P穿透
   'DST-PORT,7654,直连', // N2N SuperNode端口
-  'DST-PORT,9118,直连', // 节点小宝端口
   'DST-PORT,50000-50100,直连', // AnyDesk/RustDesk备用中继端口（关键！）
-  'DST-PORT,5353,直连', // 向日葵内网穿透
-  'DST-PORT,9118,直连', // 节点小宝
   'GEOSITE,category-collaborate-cn,直连',
   'GEOSITE,category-container,默认节点',
   // 'GEOSITE,category-netdisk-!cn,默认节点',
@@ -226,14 +219,9 @@ const allRegionDefinitions = [
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png',
   },
   {
-    name: 'CN中国大陆',
-    regex: /中国|🇨🇳|cn|china/i,
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png',
-  },
-  {
-    name: 'TW台湾省',
-    regex: /台湾|台灣|🇹🇼|tw|taiwan|tai wan/i,
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png',
+    name: 'TW台湾',
+    regex: /台湾|台灣|🇹🇼|tw|taiwan|tai wan|中国|🇨🇳|cn|china/i,
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png',
   },
   {
     name: 'GB英国',
