@@ -581,9 +581,19 @@ function main(config) {
   }
 
   // 3.1 覆盖基础配置
+  config['allow-lan'] = true
   config['bind-address'] = '*'
   config['mode'] = 'rule'
   config['ipv6'] = !!ipv6
+  config['external-controller'] = '127.0.0.1:9090'
+  config['external-controller-cors'] = {
+    'allow-origins': ['*'],
+    'allow-private-network': true,
+  }
+  config['secret'] = 'YaNet'
+  config['port'] = 7890
+  config['socks-port'] = 7891
+  config['mixed-port'] = 7892
   config['redir-port'] = 7893
   config['tproxy-port'] = 7894
   config['external-ui'] = 'ui'
@@ -650,15 +660,18 @@ function main(config) {
   }
   config['tun'] = {
     enable: true,
+    stack: 'mixed',
     device: 'utun1999',
     'auto-route': true,
     'auto-redirect': true,
     'auto-detect-interface': true,
+    'strict-route': true,
     mtu: 1500,
     gso: true,
     'gso-max-size': 65536,
     'exclude-interface': ['NodeBabyLink'],
-    'route-exclude-address': skipIps.filter((ip) => ip !== '198.18.0.0/16'),    
+    'route-exclude-address': skipIps.filter((ip) => ip !== '198.18.0.0/16'), 
+    'dns-hijack': ['any:53', 'tcp://any:53'],
   }
   config['geox-url'] = {
     geoip: `${githubProxy}https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat`,
