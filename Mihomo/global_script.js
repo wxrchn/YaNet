@@ -500,7 +500,7 @@ const serviceConfigs = [
     key: 'ads',
     name: '广告过滤',
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png',
-    rules: ['GEOSITE,category-ads-all,广告过滤', 'RULE-SET,adblockmihomo,广告过滤'],
+    rules: ['GEOSITE,category-ads-all,广告过滤', 'RULE-SET,adblockmihomo,广告过滤','RULE-SET,AntiAD,广告过滤','RULE-SET,EasyListChina,广告过滤','RULE-SET,ProgramAD,广告过滤'],
     providers: [
       {
         key: 'adblockmihomo',
@@ -508,6 +508,27 @@ const serviceConfigs = [
         path: './ruleset/adblockfilters/adblockmihomo.mrs',
         format: 'mrs',
         behavior: 'domain',
+      },
+      {
+        key: 'AntiAD',
+        url: 'https://anti-ad.net/anti-ad-mihomo.mrs',
+        path: './ruleset/anti-ad/anti-ad-mihomo.mrs',
+        format: 'mrs',
+        behavior: 'domain',
+      },
+      {
+        key: 'EasyListChina',
+        url: 'https://raw.githubusercontent.com/earoftoast/clash-rules/main/EasyListChina.list',
+        path: './ruleset/earoftoast/EasyListChina.list',
+        format: 'text',
+        behavior: 'classical',
+      },
+      {
+        key: 'ProgramAD',
+        url: 'https://raw.githubusercontent.com/earoftoast/clash-rules/main/ProgramAD.list',
+        path: './ruleset/earoftoast/ProgramAD.list',
+        format: 'text',
+        behavior: 'classical',
       },
     ],
     reject: true,
