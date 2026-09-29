@@ -146,6 +146,7 @@ let ruleOptions = {
   github: false,
   google: false,
   openai: false,
+  meta: false,
   spotify: false,
   youtube: false,
   bahamut: false,
@@ -344,6 +345,17 @@ const multiplierRegex = /(?<=[xX✕✖⨉倍率])([1-9]+(\.\d+)*|0{1}\.\d+)(?=[x
 // Icons 更新为 GitHub Raw
 const serviceConfigs = [
   {
+    key: 'meta',
+    name: 'Meta美国',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Meta.png',
+    url: 'https://meta.ai/',
+    rules: [
+      'DOMAIN-SUFFIX,meta.ai,Meta美国',
+      'DOMAIN-SUFFIX,meta.com,Meta美国',
+      'DOMAIN-SUFFIX,muse.ai,Meta美国',
+    ],
+  },
+  {
     key: 'openai',
     name: '国外AI',
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png',
@@ -351,9 +363,7 @@ const serviceConfigs = [
     rules: [
       'GEOSITE,jetbrains-ai,国外AI',
       'GEOSITE,category-ai-!cn,国外AI',
-      'GEOSITE,category-ai-chat-!cn,国外AI',
-      'DOMAIN-SUFFIX,meta.ai,国外AI',
-      'DOMAIN-SUFFIX,meta.com,国外AI',
+      'GEOSITE,category-ai-chat-!cn,国外AI',      
     ],
   },
   {
@@ -788,6 +798,10 @@ function main(config) {
       let groupProxies
       if (svc.reject) {
         groupProxies = ['拒绝', '直连', '默认节点']
+      } else if (svc.key === 'meta') {
+        groupProxies = regionGroupNames.includes('US美国')
+          ? ['US美国']
+          : ['默认节点', '直连']
       } else if (svc.key === 'biliintl' || svc.key === 'bahamut') {
         groupProxies = ['默认节点', '直连', ...regionGroupNames]
       } else {
