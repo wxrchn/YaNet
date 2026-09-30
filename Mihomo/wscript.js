@@ -1,6 +1,6 @@
 /***
  * Clash Verge Rev / Mihomo Party 优化脚本
- * Github：https://raw.githubusercontent.com/wxrchn/YaNet/refs/heads/main/Mihomo/global_script.js
+ * Github：https://raw.githubusercontent.com/wxrchn/YaNet/refs/heads/main/Mihomo/wscript.js
  */
 
 function stringToArray(val) {
