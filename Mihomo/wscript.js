@@ -347,7 +347,7 @@ const serviceConfigs = [
   {
     key: 'meta',
     name: 'Meta美国',
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Meta.png',
     url: 'https://meta.ai/',
     rules: [
       'DOMAIN-SUFFIX,meta.ai,Meta美国',
@@ -590,6 +590,19 @@ function main(config) {
     throw new Error('配置文件中未找到任何代理')
   }
 
+  // 3.0 Reality 节点补丁：Xray 26.9.9 后需开启 mlkem768 支持
+  const MLKEM_KEY = 'support-x25519mlkem768'
+  proxies.forEach((p) => {
+    if (p.type !== 'vless') return
+
+    // 位置 1：节点自身的 reality-opts
+    if (p['reality-opts']) p['reality-opts'][MLKEM_KEY] = true
+
+    // 位置 2：xhttp-opts.download-settings.reality-opts
+    const ds = p['xhttp-opts']?.['download-settings']
+    if (ds?.['reality-opts']) ds['reality-opts'][MLKEM_KEY] = true
+  })
+  
   // 3.1 覆盖基础配置
   config['allow-lan'] = true
   config['bind-address'] = '*'
