@@ -347,7 +347,7 @@ const serviceConfigs = [
   {
     key: 'meta',
     name: 'Meta美国',
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Meta.png',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/FaceBook.png',
     url: 'https://meta.ai/',
     rules: [
       'DOMAIN-SUFFIX,meta.ai,Meta美国',
